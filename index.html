@@ -256,4 +256,1761 @@ section{
 .events-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
- 
+  gap:32px;
+}
+
+.event-card{
+  padding:36px 24px;
+  border-radius:20px;
+  text-align:center;
+}
+
+.event-card h3{
+  margin:0 0 10px;
+
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+}
+
+.event-time{
+  color:var(--sage);
+  font-size:14px;
+}
+
+.event-date{
+  margin-top:8px;
+  color:#5a5a5a;
+  font-size:14px;
+}
+
+.event-location{
+  margin-top:18px;
+  color:#777;
+  font-size:13px;
+}
+
+/* =========================
+   RUNDOWN
+========================= */
+
+.rundown{
+  max-width:650px;
+  margin:auto;
+}
+
+.rundown-item{
+  display:flex;
+  align-items:center;
+  gap:18px;
+
+  margin-bottom:16px;
+  padding:20px;
+
+  border-radius:15px;
+}
+
+.rundown-icon{
+  width:42px;
+  height:42px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  flex-shrink:0;
+
+  border-radius:50%;
+
+  background:var(--sage-light);
+  color:white;
+
+  font-size:18px;
+}
+
+.rundown-title{
+  margin:0;
+  font-size:14px;
+  font-weight:500;
+}
+
+.rundown-time{
+  margin:5px 0 0;
+  color:var(--sage);
+  font-size:13px;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.gallery img{
+  width:100%;
+  height:320px;
+
+  display:block;
+
+  object-fit:cover;
+
+  border-radius:12px;
+
+  transition:transform .4s ease;
+}
+
+.gallery img:hover{
+  transform:scale(1.02);
+}
+
+/* =========================
+   LOCATION
+========================= */
+
+.location{
+  text-align:center;
+}
+
+.location p{
+  color:#5a5a5a;
+  font-size:14px;
+}
+
+.maps-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-top:20px;
+  padding:14px 28px;
+
+  border-radius:30px;
+
+  background:#7f917b;
+  color:white;
+
+  text-decoration:none;
+
+  font-size:13px;
+  font-weight:500;
+
+  transition:.3s ease;
+}
+
+.maps-button:hover{
+  transform:translateY(-2px);
+  opacity:.9;
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown-section{
+  padding:70px 20px;
+  background:var(--cream-dark);
+  text-align:center;
+}
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.count-box{
+  width:80px;
+  padding:16px 10px;
+  border-radius:12px;
+}
+
+.count-number{
+  display:block;
+
+  color:var(--sage);
+
+  font-family:'Playfair Display',serif;
+  font-size:27px;
+  font-weight:700;
+}
+
+.count-label{
+  display:block;
+  margin-top:5px;
+  color:#777;
+  font-size:11px;
+}
+
+/* =========================
+   RSVP
+========================= */
+
+.rsvp{
+  max-width:520px;
+  margin:auto;
+}
+
+.form-card{
+  padding:32px;
+  border-radius:20px;
+}
+
+.form-group{
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+
+  color:var(--text-dark);
+
+  font-size:14px;
+  font-weight:500;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+
+  padding:12px 14px;
+
+  border:1px solid var(--cream-dark);
+  border-radius:9px;
+
+  background:white;
+
+  font-family:inherit;
+  font-size:14px;
+
+  outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:var(--sage);
+}
+
+textarea{
+  resize:vertical;
+}
+
+.attendance{
+  display:flex;
+  gap:10px;
+}
+
+.attendance button{
+  flex:1;
+
+  padding:11px;
+
+  border:1px solid var(--sage);
+  border-radius:9px;
+
+  background:transparent;
+  color:var(--sage);
+
+  cursor:pointer;
+
+  transition:.3s ease;
+}
+
+.attendance button.active{
+  background:var(--sage);
+  color:white;
+}
+
+.submit-button{
+  width:100%;
+
+  padding:14px;
+
+  border:none;
+  border-radius:12px;
+
+  background:var(--sage);
+  color:white;
+
+  font-family:inherit;
+  font-size:14px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.3s ease;
+}
+
+.submit-button:hover{
+  opacity:.9;
+  transform:translateY(-1px);
+}
+
+.submit-button:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+.success{
+  display:none;
+
+  margin-top:15px;
+
+  color:var(--sage);
+
+  text-align:center;
+
+  font-size:13px;
+}
+
+.error{
+  display:none;
+
+  margin-top:15px;
+
+  color:#b35c5c;
+
+  text-align:center;
+
+  font-size:13px;
+}
+
+/* =========================
+   MESSAGES
+========================= */
+
+.messages{
+  max-width:650px;
+  margin:auto;
+}
+
+.stats{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+
+  gap:28px;
+
+  margin-bottom:30px;
+
+  text-align:center;
+}
+
+.stat-number{
+  display:block;
+
+  color:var(--sage);
+
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  font-weight:700;
+}
+
+.stat-label{
+  color:#777;
+  font-size:12px;
+}
+
+.message-list{
+  max-height:450px;
+  overflow-y:auto;
+  padding-right:5px;
+}
+
+.message{
+  margin-bottom:12px;
+  padding:18px;
+  border-radius:14px;
+}
+
+.message-name{
+  margin:0;
+  font-size:14px;
+  font-weight:600;
+}
+
+.message-text{
+  margin:7px 0;
+
+  color:#5a5a5a;
+
+  font-size:13px;
+  line-height:1.6;
+}
+
+.message-meta{
+  color:#aaa;
+  font-size:11px;
+}
+
+.loading{
+  padding:30px;
+  text-align:center;
+  color:#888;
+  font-size:13px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:35px 20px;
+
+  color:#aaa;
+
+  text-align:center;
+
+  font-size:12px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+  .container{
+    width:min(100% - 36px,900px);
+  }
+
+  .section{
+    padding:65px 0;
+  }
+
+  .opening-title{
+    font-size:36px;
+  }
+
+  .events-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery img{
+    height:240px;
+  }
+
+  .form-card{
+    padding:24px;
+  }
+
+}
+
+</style>
+</head>
+
+<body class="locked">
+
+<!-- =========================
+     OPENING
+========================= -->
+
+<div id="opening">
+
+  <div class="opening-content">
+
+    <div class="opening-subtitle">
+      The Wedding of
+    </div>
+
+    <h1 class="opening-title">
+      Luthfi & Jasmine
+    </h1>
+
+    <div class="opening-line"></div>
+
+    <div class="opening-date">
+      27 • 08 • 2026
+    </div>
+
+    <button
+      id="openInvitation"
+      class="open-button">
+
+      Buka Undangan
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<audio
+  id="bgMusic"
+  loop
+  preload="auto">
+
+  <source
+    src="https://github.com/cluthfi60-eng/Wedding-Song/raw/refs/heads/main/ssstik.io_1784754010901.mp3"
+    type="audio/mpeg">
+
+</audio>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main id="mainContent">
+
+
+<!-- STORY -->
+
+<section class="section story">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Cerita Kami
+    </h2>
+
+    <p>
+      Perjalanan cinta kami dimulai dari sebuah
+      pertemuan sederhana yang kemudian menjadi
+      kisah indah. Dengan penuh syukur, kami
+      mengundang Anda untuk menjadi bagian dari
+      hari bahagia kami.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- COUPLE PHOTO -->
+
+<section>
+
+  <img
+    class="couple-photo"
+    src="images/655904691_18077009756568712_8566205122460984825_n.webp"
+    alt="Foto Luthfi dan Jasmine">
+
+</section>
+
+
+<!-- EVENTS -->
+
+<section class="section">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Acara Pernikahan
+    </h2>
+
+    <div class="events-grid">
+
+      <div class="event-card glass">
+
+        <h3>
+          Akad Nikah
+        </h3>
+
+        <div class="event-time">
+          -
+        </div>
+
+        <div class="event-date">
+          Kamis, 27 Agustus 2026
+        </div>
+
+        <div class="event-location">
+          Kantor KUA
+        </div>
+
+      </div>
+
+
+      <div class="event-card glass">
+
+        <h3>
+          Resepsi
+        </h3>
+
+        <div class="event-time">
+          12:00 - 16:00 WIB
+        </div>
+
+        <div class="event-date">
+          Kamis, 27 Agustus 2026
+        </div>
+
+        <div class="event-location">
+          Saung Dolken,
+          Cimahpar, Bogor Utara
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- RUNDOWN -->
+
+<section class="section">
+
+  <div class="container rundown">
+
+    <h2 class="section-title">
+      Rundown Acara
+    </h2>
+
+
+    <div class="rundown-item glass">
+
+      <div class="rundown-icon">
+        ♥
+      </div>
+
+      <div>
+
+        <p class="rundown-title">
+          Akad Nikah
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="rundown-item glass">
+
+      <div class="rundown-icon">
+        🍽
+      </div>
+
+      <div>
+
+        <p class="rundown-title">
+          Acara Keluarga (Lunch)
+        </p>
+
+        <p class="rundown-time">
+          12:00 - 16:00 WIB
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section class="section">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Galeri
+    </h2>
+
+    <div class="gallery">
+
+      <img
+        src="images/656207242_18183318178373859_2767123135094950448_n.webp"
+        alt="Galeri 1">
+
+      <img
+        src="images/n%20you%2C%20w%20you.%20(1).jpg"
+        alt="Galeri 2">
+
+      <img
+        src="images/n%20you%2C%20w%20you.%20(2).jpg"
+        alt="Galeri 3">
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- LOCATION -->
+
+<section class="section location">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Lokasi
+    </h2>
+
+    <p>
+      Saung Dolken
+    </p>
+
+    <p>
+      Cimahpar, Bogor Utara
+    </p>
+
+    <a
+      class="maps-button"
+      href="https://maps.app.goo.gl/eCppDXXx1prALz8L9"
+      target="_blank"
+      rel="noopener">
+
+      📍 Buka Lokasi di Google Maps
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+
+<section class="countdown-section">
+
+  <h2 class="section-title">
+    Menghitung Hari
+  </h2>
+
+  <div class="countdown">
+
+    <div class="count-box glass">
+
+      <span
+        id="days"
+        class="count-number">
+        0
+      </span>
+
+      <span class="count-label">
+        Hari
+      </span>
+
+    </div>
+
+
+    <div class="count-box glass">
+
+      <span
+        id="hours"
+        class="count-number">
+        0
+      </span>
+
+      <span class="count-label">
+        Jam
+      </span>
+
+    </div>
+
+
+    <div class="count-box glass">
+
+      <span
+        id="minutes"
+        class="count-number">
+        0
+      </span>
+
+      <span class="count-label">
+        Menit
+      </span>
+
+    </div>
+
+
+    <div class="count-box glass">
+
+      <span
+        id="seconds"
+        class="count-number">
+        0
+      </span>
+
+      <span class="count-label">
+        Detik
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- RSVP -->
+
+<section class="section">
+
+  <div class="container rsvp">
+
+    <h2 class="section-title">
+      Reservasi Kehadiran
+    </h2>
+
+
+    <form
+      id="rsvpForm"
+      class="form-card glass">
+
+
+      <div class="form-group">
+
+        <label for="name">
+          Nama
+        </label>
+
+        <input
+          id="name"
+          type="text"
+          placeholder="Masukkan nama Anda"
+          required>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="message">
+          Ucapan & Doa
+        </label>
+
+        <textarea
+          id="message"
+          rows="3"
+          placeholder="Tulis ucapan dan doa..."></textarea>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Kehadiran
+        </label>
+
+        <div class="attendance">
+
+          <button
+            type="button"
+            data-attendance="hadir">
+
+            Hadir
+
+          </button>
+
+          <button
+            type="button"
+            data-attendance="tidak hadir">
+
+            Tidak Hadir
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="pax">
+          Jumlah Tamu
+        </label>
+
+        <select id="pax">
+
+          <option value="1">
+            1 Orang
+          </option>
+
+          <option value="2">
+            2 Orang
+          </option>
+
+          <option value="3">
+            3 Orang
+          </option>
+
+          <option value="4">
+            4 Orang
+          </option>
+
+          <option value="5">
+            5 Orang
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        id="submitButton"
+        type="submit"
+        class="submit-button">
+
+        Kirim Reservasi
+
+      </button>
+
+
+      <div
+        id="success"
+        class="success">
+
+        Terima kasih!
+        Reservasi Anda telah terkirim 💚
+
+      </div>
+
+
+      <div
+        id="error"
+        class="error">
+
+        Maaf, terjadi kesalahan.
+        Silakan coba lagi.
+
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- MESSAGES -->
+
+<section class="section">
+
+  <div class="container messages">
+
+    <h2 class="section-title">
+      Ucapan & Doa
+    </h2>
+
+
+    <div class="stats">
+
+      <div>
+
+        <span
+          id="statTotal"
+          class="stat-number">
+          0
+        </span>
+
+        <span class="stat-label">
+          Ucapan
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <span
+          id="statHadir"
+          class="stat-number">
+          0
+        </span>
+
+        <span class="stat-label">
+          Hadir
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <span
+          id="statTidakHadir"
+          class="stat-number">
+          0
+        </span>
+
+        <span class="stat-label">
+          Tidak Hadir
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <span
+          id="statTamu"
+          class="stat-number">
+          0
+        </span>
+
+        <span class="stat-label">
+          Jumlah Tamu
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="messageList"
+      class="message-list">
+
+      <div class="loading">
+        Memuat ucapan...
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  With love,
+  Luthfi & Jasmine
+
+</footer>
+
+
+</main>
+
+
+<script>
+
+/* =====================================
+   GOOGLE APPS SCRIPT API
+===================================== */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbxKHr9DbAFj48liTProinNJy30O6p3ltmIrozMZPB9qTXo7aaK4BSAnMmOoYoriS4OB/exec";
+
+
+/* =====================================
+   OPEN INVITATION
+===================================== */
+
+const opening =
+document.getElementById("opening");
+
+const openButton =
+document.getElementById("openInvitation");
+
+const mainContent =
+document.getElementById("mainContent");
+
+const music =
+document.getElementById("bgMusic");
+
+
+openButton.addEventListener(
+"click",
+function(){
+
+  document.body.classList.remove("locked");
+
+  mainContent.classList.add("show");
+
+  opening.classList.add("hide");
+
+  music.play().catch(
+    function(error){
+      console.log(
+        "Musik tidak dapat diputar:",
+        error
+      );
+    }
+  );
+
+  setTimeout(
+    function(){
+      opening.style.display="none";
+    },
+    800
+  );
+
+});
+
+
+
+/* =====================================
+   COUNTDOWN
+===================================== */
+
+const weddingDate =
+new Date(
+"2026-08-27T14:00:00+07:00"
+);
+
+
+function updateCountdown(){
+
+  const now =
+  new Date();
+
+  let difference =
+  Math.max(
+    0,
+    weddingDate-now
+  );
+
+
+  const days =
+  Math.floor(
+    difference/86400000
+  );
+
+  difference %= 86400000;
+
+
+  const hours =
+  Math.floor(
+    difference/3600000
+  );
+
+  difference %= 3600000;
+
+
+  const minutes =
+  Math.floor(
+    difference/60000
+  );
+
+  difference %= 60000;
+
+
+  const seconds =
+  Math.floor(
+    difference/1000
+  );
+
+
+  document.getElementById(
+    "days"
+  ).textContent=days;
+
+
+  document.getElementById(
+    "hours"
+  ).textContent=hours;
+
+
+  document.getElementById(
+    "minutes"
+  ).textContent=minutes;
+
+
+  document.getElementById(
+    "seconds"
+  ).textContent=seconds;
+
+}
+
+
+updateCountdown();
+
+setInterval(
+updateCountdown,
+1000
+);
+
+
+
+/* =====================================
+   ATTENDANCE
+===================================== */
+
+let selectedAttendance =
+"";
+
+
+const attendanceButtons =
+document.querySelectorAll(
+"[data-attendance]"
+);
+
+
+attendanceButtons.forEach(
+function(button){
+
+  button.addEventListener(
+    "click",
+    function(){
+
+      attendanceButtons.forEach(
+        function(btn){
+
+          btn.classList.remove(
+            "active"
+          );
+
+        }
+      );
+
+
+      button.classList.add(
+        "active"
+      );
+
+
+      selectedAttendance =
+      button.dataset.attendance;
+
+    }
+  );
+
+});
+
+
+
+/* =====================================
+   RSVP SUBMIT KE GOOGLE SHEET
+===================================== */
+
+const form =
+document.getElementById(
+"rsvpForm"
+);
+
+
+form.addEventListener(
+"submit",
+async function(event){
+
+  event.preventDefault();
+
+
+  const name =
+  document.getElementById(
+    "name"
+  ).value.trim();
+
+
+  const message =
+  document.getElementById(
+    "message"
+  ).value.trim();
+
+
+  const pax =
+  document.getElementById(
+    "pax"
+  ).value;
+
+
+  const success =
+  document.getElementById(
+    "success"
+  );
+
+
+  const error =
+  document.getElementById(
+    "error"
+  );
+
+
+  const submitButton =
+  document.getElementById(
+    "submitButton"
+  );
+
+
+  success.style.display =
+  "none";
+
+
+  error.style.display =
+  "none";
+
+
+  if(!selectedAttendance){
+
+    alert(
+      "Silakan pilih kehadiran terlebih dahulu."
+    );
+
+    return;
+
+  }
+
+
+  submitButton.disabled =
+  true;
+
+
+  submitButton.textContent =
+  "Mengirim...";
+
+
+  try{
+
+    const formData =
+    new URLSearchParams();
+
+
+    formData.append(
+      "name",
+      name
+    );
+
+
+    formData.append(
+      "message",
+      message
+    );
+
+
+    formData.append(
+      "attendance",
+      selectedAttendance
+    );
+
+
+    formData.append(
+      "pax",
+      pax
+    );
+
+
+    await fetch(
+      API_URL,
+      {
+        method:"POST",
+        mode:"no-cors",
+        body:formData
+      }
+    );
+
+
+    success.style.display =
+    "block";
+
+
+    form.reset();
+
+
+    attendanceButtons.forEach(
+      function(btn){
+
+        btn.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+
+    selectedAttendance =
+    "";
+
+
+    loadMessages();
+
+
+    setTimeout(
+      function(){
+
+        success.style.display =
+        "none";
+
+      },
+      5000
+    );
+
+
+  }catch(err){
+
+    console.error(err);
+
+
+    error.style.display =
+    "block";
+
+  }
+
+
+  submitButton.disabled =
+  false;
+
+
+  submitButton.textContent =
+  "Kirim Reservasi";
+
+});
+
+
+
+/* =====================================
+   LOAD DATA DARI GOOGLE SHEET
+===================================== */
+
+async function loadMessages(){
+
+  const list =
+  document.getElementById(
+    "messageList"
+  );
+
+
+  list.innerHTML =
+  '<div class="loading">Memuat ucapan...</div>';
+
+
+  try{
+
+    const response =
+    await fetch(
+      API_URL,
+      {
+        method:"GET"
+      }
+    );
+
+
+    const data =
+    await response.json();
+
+
+    let messages =
+    [];
+
+
+    if(
+      Array.isArray(data)
+    ){
+
+      messages =
+      data;
+
+    }else if(
+      Array.isArray(data.data)
+    ){
+
+      messages =
+      data.data;
+
+    }else if(
+      Array.isArray(data.messages)
+    ){
+
+      messages =
+      data.messages;
+
+    }
+
+
+    renderMessages(
+      messages
+    );
+
+
+  }catch(err){
+
+    console.error(
+      "Gagal mengambil data:",
+      err
+    );
+
+
+    list.innerHTML =
+    '<div class="loading">Belum ada ucapan & doa.</div>';
+
+  }
+
+}
+
+
+
+/* =====================================
+   RENDER MESSAGES
+===================================== */
+
+function renderMessages(
+messages
+){
+
+  const list =
+  document.getElementById(
+    "messageList"
+  );
+
+
+  list.innerHTML =
+  "";
+
+
+  if(
+    !messages ||
+    messages.length===0
+  ){
+
+    list.innerHTML =
+    '<div class="loading">Belum ada ucapan & doa.</div>';
+
+    updateStats(
+      []
+    );
+
+    return;
+
+  }
+
+
+  messages
+  .slice()
+  .reverse()
+  .forEach(
+    function(item){
+
+      const div =
+      document.createElement(
+        "div"
+      );
+
+
+      div.className =
+      "message glass";
+
+
+      const name =
+      escapeHTML(
+        item.name ||
+        item.Nama ||
+        ""
+      );
+
+
+      const message =
+      escapeHTML(
+        item.message ||
+        item.Message ||
+        item.Ucapan ||
+        ""
+      );
+
+
+      const attendance =
+      String(
+        item.attendance ||
+        item.Attendance ||
+        item.Kehadiran ||
+        ""
+      ).toLowerCase();
+
+
+      const pax =
+      Number(
+        item.pax ||
+        item.Pax ||
+        item["Jumlah Tamu"] ||
+        0
+      );
+
+
+      const attendanceText =
+      attendance==="hadir"
+      ? "✓ Hadir"
+      : "✗ Tidak Hadir";
+
+
+      div.innerHTML =
+
+      `
+
+      <p class="message-name">
+        ${name}
+      </p>
+
+      <p class="message-text">
+        ${message}
+      </p>
+
+      <div class="message-meta">
+
+        ${attendanceText}
+        ·
+        ${pax}
+        orang
+
+      </div>
+
+      `;
+
+
+      list.appendChild(
+        div
+      );
+
+    }
+  );
+
+
+  updateStats(
+    messages
+  );
+
+}
+
+
+
+/* =====================================
+   STATISTICS
+===================================== */
+
+function updateStats(
+messages
+){
+
+  const total =
+  messages.length;
+
+
+  const hadir =
+  messages.filter(
+    function(item){
+
+      const attendance =
+      String(
+        item.attendance ||
+        item.Attendance ||
+        item.Kehadiran ||
+        ""
+      ).toLowerCase();
+
+
+      return(
+        attendance==="hadir"
+      );
+
+    }
+  ).length;
+
+
+  const tidakHadir =
+  messages.filter(
+    function(item){
+
+      const attendance =
+      String(
+        item.attendance ||
+        item.Attendance ||
+        item.Kehadiran ||
+        ""
+      ).toLowerCase();
+
+
+      return(
+        attendance==="tidak hadir"
+      );
+
+    }
+  ).length;
+
+
+  const totalTamu =
+  messages.reduce(
+    function(sum,item){
+
+      return(
+        sum+
+        Number(
+          item.pax ||
+          item.Pax ||
+          item["Jumlah Tamu"] ||
+          0
+        )
+      );
+
+    },
+    0
+  );
+
+
+  document.getElementById(
+    "statTotal"
+  ).textContent =
+  total;
+
+
+  document.getElementById(
+    "statHadir"
+  ).textContent =
+  hadir;
+
+
+  document.getElementById(
+    "statTidakHadir"
+  ).textContent =
+  tidakHadir;
+
+
+  document.getElementById(
+    "statTamu"
+  ).textContent =
+  totalTamu;
+
+}
+
+
+
+/* =====================================
+   SECURITY
+===================================== */
+
+function escapeHTML(
+text
+){
+
+  const div =
+  document.createElement(
+    "div"
+  );
+
+
+  div.textContent =
+  String(
+    text
+  );
+
+
+  return div.innerHTML;
+
+}
+
+
+
+/* =====================================
+   INITIAL LOAD
+===================================== */
+
+loadMessages();
+
+</script>
+
+</body>
+  </html>
