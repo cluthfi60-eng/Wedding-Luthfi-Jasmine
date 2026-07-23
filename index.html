@@ -1077,10 +1077,18 @@ function escapeHTML(text){
 ===================================== */
 loadMessages();
 
-  // AMBIL NAMA TAMU DARI LINK URL
+  /// AMBIL NAMA TAMU DARI LINK URL
 window.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
-  const guest = urlParams.get('to');
+  let guest = urlParams.get('to');
+  
+  if (!guest && window.location.href.includes('?to=')) {
+    const parts = window.location.href.split('?to=');
+    if (parts[1]) {
+      guest = parts[1].split('&')[0];
+    }
+  }
+
   if (guest) {
     const decodedName = decodeURIComponent(guest.replace(/[-+]/g, ' '));
     document.getElementById('guestName').textContent = decodedName;
