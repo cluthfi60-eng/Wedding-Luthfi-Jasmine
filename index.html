@@ -1305,6 +1305,7 @@ footer{
 /* =====================================
    GOOGLE APPS SCRIPT API
 ===================================== */
+
 const API_URL =
 "https://script.google.com/macros/s/AKfycbznqA6JBL41zZ6dYpxEl5VFoyMJJmNpofVF2-hKdMAeMDs63FHbz_aZ-f0fl9BSG5lI1A/exec";
 
@@ -1313,22 +1314,12 @@ const API_URL =
    OPEN INVITATION
 ===================================== */
 
-const opening =
-document.getElementById("opening");
+const opening = document.getElementById("opening");
+const openButton = document.getElementById("openInvitation");
+const mainContent = document.getElementById("mainContent");
+const music = document.getElementById("bgMusic");
 
-const openButton =
-document.getElementById("openInvitation");
-
-const mainContent =
-document.getElementById("mainContent");
-
-const music =
-document.getElementById("bgMusic");
-
-
-openButton.addEventListener(
-"click",
-function(){
+openButton.addEventListener("click", function(){
 
   document.body.classList.remove("locked");
 
@@ -1336,24 +1327,15 @@ function(){
 
   opening.classList.add("hide");
 
-  music.play().catch(
-    function(error){
-      console.log(
-        "Musik tidak dapat diputar:",
-        error
-      );
-    }
-  );
+  music.play().catch(function(error){
+    console.log("Musik tidak dapat diputar:", error);
+  });
 
-  setTimeout(
-    function(){
-      opening.style.display="none";
-    },
-    800
-  );
+  setTimeout(function(){
+    opening.style.display = "none";
+  }, 800);
 
 });
-
 
 
 /* =====================================
@@ -1361,209 +1343,116 @@ function(){
 ===================================== */
 
 const weddingDate =
-new Date(
-"2026-08-27T14:00:00+07:00"
-);
-
+new Date("2026-08-27T14:00:00+07:00");
 
 function updateCountdown(){
 
-  const now =
-  new Date();
+  const now = new Date();
 
   let difference =
-  Math.max(
-    0,
-    weddingDate-now
-  );
-
+  Math.max(0, weddingDate - now);
 
   const days =
-  Math.floor(
-    difference/86400000
-  );
+  Math.floor(difference / 86400000);
 
   difference %= 86400000;
 
-
   const hours =
-  Math.floor(
-    difference/3600000
-  );
+  Math.floor(difference / 3600000);
 
   difference %= 3600000;
 
-
   const minutes =
-  Math.floor(
-    difference/60000
-  );
+  Math.floor(difference / 60000);
 
   difference %= 60000;
 
-
   const seconds =
-  Math.floor(
-    difference/1000
-  );
+  Math.floor(difference / 1000);
 
-
-  document.getElementById(
-    "days"
-  ).textContent=days;
-
-
-  document.getElementById(
-    "hours"
-  ).textContent=hours;
-
-
-  document.getElementById(
-    "minutes"
-  ).textContent=minutes;
-
-
-  document.getElementById(
-    "seconds"
-  ).textContent=seconds;
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
 
 }
 
-
 updateCountdown();
 
-setInterval(
-updateCountdown,
-1000
-);
-
+setInterval(updateCountdown, 1000);
 
 
 /* =====================================
    ATTENDANCE
 ===================================== */
 
-let selectedAttendance =
-"";
-
+let selectedAttendance = "";
 
 const attendanceButtons =
-document.querySelectorAll(
-"[data-attendance]"
-);
+document.querySelectorAll("[data-attendance]");
 
+attendanceButtons.forEach(function(button){
 
-attendanceButtons.forEach(
-function(button){
+  button.addEventListener("click", function(){
 
-  button.addEventListener(
-    "click",
-    function(){
+    attendanceButtons.forEach(function(btn){
+      btn.classList.remove("active");
+    });
 
-      attendanceButtons.forEach(
-        function(btn){
+    button.classList.add("active");
 
-          btn.classList.remove(
-            "active"
-          );
+    selectedAttendance =
+    button.dataset.attendance;
 
-        }
-      );
-
-
-      button.classList.add(
-        "active"
-      );
-
-
-      selectedAttendance =
-      button.dataset.attendance;
-
-    }
-  );
+  });
 
 });
 
 
-
 /* =====================================
-   RSVP SUBMIT KE GOOGLE SHEET
+   RSVP SUBMIT
 ===================================== */
 
 const form =
-document.getElementById(
-"rsvpForm"
-);
+document.getElementById("rsvpForm");
 
-
-form.addEventListener(
-"submit",
-async function(event){
+form.addEventListener("submit", async function(event){
 
   event.preventDefault();
 
-
   const name =
-  document.getElementById(
-    "name"
-  ).value.trim();
-
+  document.getElementById("name").value.trim();
 
   const message =
-  document.getElementById(
-    "message"
-  ).value.trim();
-
+  document.getElementById("message").value.trim();
 
   const pax =
-  document.getElementById(
-    "pax"
-  ).value;
-
+  document.getElementById("pax").value;
 
   const success =
-  document.getElementById(
-    "success"
-  );
-
+  document.getElementById("success");
 
   const error =
-  document.getElementById(
-    "error"
-  );
-
+  document.getElementById("error");
 
   const submitButton =
-  document.getElementById(
-    "submitButton"
-  );
+  document.getElementById("submitButton");
 
-
-  success.style.display =
-  "none";
-
-
-  error.style.display =
-  "none";
+  success.style.display = "none";
+  error.style.display = "none";
 
 
   if(!selectedAttendance){
 
-    alert(
-      "Silakan pilih kehadiran terlebih dahulu."
-    );
+    alert("Silakan pilih kehadiran terlebih dahulu.");
 
     return;
 
   }
 
 
-  submitButton.disabled =
-  true;
-
-
-  submitButton.textContent =
-  "Mengirim...";
+  submitButton.disabled = true;
+  submitButton.textContent = "Mengirim...";
 
 
   try{
@@ -1571,91 +1460,59 @@ async function(event){
     const formData =
     new URLSearchParams();
 
-
-    formData.append(
-      "name",
-      name
-    );
-
-
-    formData.append(
-      "message",
-      message
-    );
-
-
-    formData.append(
-      "attendance",
-      selectedAttendance
-    );
-
-
-    formData.append(
-      "pax",
-      pax
-    );
+    formData.append("name", name);
+    formData.append("message", message);
+    formData.append("attendance", selectedAttendance);
+    formData.append("pax", pax);
 
 
     await fetch(
       API_URL,
       {
-        method:"POST",
-        mode:"no-cors",
-        body:formData
+        method: "POST",
+        mode: "no-cors",
+        body: formData
       }
     );
 
 
-    success.style.display =
-    "block";
-
+    success.style.display = "block";
 
     form.reset();
 
 
-    attendanceButtons.forEach(
-      function(btn){
-
-        btn.classList.remove(
-          "active"
-        );
-
-      }
-    );
+    attendanceButtons.forEach(function(btn){
+      btn.classList.remove("active");
+    });
 
 
-    selectedAttendance =
-    "";
+    selectedAttendance = "";
 
 
-    loadMessages();
+    setTimeout(function(){
+
+      loadMessages();
+
+    }, 1500);
 
 
-    setTimeout(
-      function(){
+    setTimeout(function(){
 
-        success.style.display =
-        "none";
+      success.style.display = "none";
 
-      },
-      5000
-    );
+    }, 5000);
 
 
   }catch(err){
 
-    console.error(err);
+    console.error("Error RSVP:", err);
 
-
-    error.style.display =
-    "block";
+    error.style.display = "block";
 
   }
 
 
-  submitButton.disabled =
-  false;
-
+  submitButton.disabled = false;
 
   submitButton.textContent =
   "Kirim Reservasi";
@@ -1663,18 +1520,14 @@ async function(event){
 });
 
 
-
 /* =====================================
-   LOAD DATA DARI GOOGLE SHEET
+   LOAD DATA GOOGLE SHEET
 ===================================== */
 
 async function loadMessages(){
 
   const list =
-  document.getElementById(
-    "messageList"
-  );
-
+  document.getElementById("messageList");
 
   list.innerHTML =
   '<div class="loading">Memuat ucapan...</div>';
@@ -1683,49 +1536,35 @@ async function loadMessages(){
   try{
 
     const response =
-    await fetch(
-      API_URL,
-      {
-        method:"GET"
-      }
-    );
+    await fetch(API_URL + "?action=getMessages", {
+      method: "GET",
+      cache: "no-cache"
+    });
 
 
     const data =
     await response.json();
 
 
-    let messages =
-    [];
+    let messages = [];
 
 
-    if(
-      Array.isArray(data)
-    ){
+    if(Array.isArray(data)){
 
-      messages =
-      data;
+      messages = data;
 
-    }else if(
-      Array.isArray(data.data)
-    ){
+    }else if(Array.isArray(data.data)){
 
-      messages =
-      data.data;
+      messages = data.data;
 
-    }else if(
-      Array.isArray(data.messages)
-    ){
+    }else if(Array.isArray(data.messages)){
 
-      messages =
-      data.messages;
+      messages = data.messages;
 
     }
 
 
-    renderMessages(
-      messages
-    );
+    renderMessages(messages);
 
 
   }catch(err){
@@ -1744,36 +1583,24 @@ async function loadMessages(){
 }
 
 
-
 /* =====================================
    RENDER MESSAGES
 ===================================== */
 
-function renderMessages(
-messages
-){
+function renderMessages(messages){
 
   const list =
-  document.getElementById(
-    "messageList"
-  );
+  document.getElementById("messageList");
+
+  list.innerHTML = "";
 
 
-  list.innerHTML =
-  "";
-
-
-  if(
-    !messages ||
-    messages.length===0
-  ){
+  if(!messages || messages.length === 0){
 
     list.innerHTML =
     '<div class="loading">Belum ada ucapan & doa.</div>';
 
-    updateStats(
-      []
-    );
+    updateStats([]);
 
     return;
 
@@ -1783,63 +1610,68 @@ messages
   messages
   .slice()
   .reverse()
-  .forEach(
-    function(item){
+  .forEach(function(item){
 
-      const div =
-      document.createElement(
-        "div"
-      );
+    const div =
+    document.createElement("div");
 
-
-      div.className =
-      "message glass";
+    div.className =
+    "message glass";
 
 
-      const name =
-      escapeHTML(
-        item.name ||
-        item.Nama ||
-        ""
-      );
+    const name =
+    escapeHTML(
+      item.name ||
+      item.Nama ||
+      ""
+    );
 
 
-      const message =
-      escapeHTML(
-        item.message ||
-        item.Message ||
-        item.Ucapan ||
-        ""
-      );
+    const message =
+    escapeHTML(
+      item.message ||
+      item.Message ||
+      item.Ucapan ||
+      ""
+    );
 
 
-      const attendance =
-      String(
-        item.attendance ||
-        item.Attendance ||
-        item.Kehadiran ||
-        ""
-      ).toLowerCase();
+    const attendance =
+    String(
+      item.attendance ||
+      item.Attendance ||
+      item.Kehadiran ||
+      ""
+    ).toLowerCase().trim();
 
 
-      const pax =
-      Number(
-        item.pax ||
-        item.Pax ||
-        item["Jumlah Tamu"] ||
-        0
-      );
+    const pax =
+    Number(
+      item.pax ||
+      item.Pax ||
+      item["Jumlah Tamu"] ||
+      0
+    );
 
 
-      const attendanceText =
-      attendance==="hadir"
-      ? "✓ Hadir"
-      : "✗ Tidak Hadir";
+    let attendanceText = "";
+
+    if(attendance === "hadir"){
+
+      attendanceText = "✓ Hadir";
+
+    }else if(attendance === "tidak hadir"){
+
+      attendanceText = "✗ Tidak Hadir";
+
+    }else{
+
+      attendanceText = attendance;
+
+    }
 
 
-      div.innerHTML =
-
-      `
+    div.innerHTML = `
 
       <p class="message-name">
         ${name}
@@ -1858,149 +1690,107 @@ messages
 
       </div>
 
-      `;
+    `;
 
 
-      list.appendChild(
-        div
-      );
+    list.appendChild(div);
 
-    }
-  );
+  });
 
 
-  updateStats(
-    messages
-  );
+  updateStats(messages);
 
 }
-
 
 
 /* =====================================
    STATISTICS
 ===================================== */
 
-function updateStats(
-messages
-){
+function updateStats(messages){
 
   const total =
   messages.length;
 
 
   const hadir =
-  messages.filter(
-    function(item){
+  messages.filter(function(item){
 
-      const attendance =
-      String(
-        item.attendance ||
-        item.Attendance ||
-        item.Kehadiran ||
-        ""
-      ).toLowerCase();
+    const attendance =
+    String(
+      item.attendance ||
+      item.Attendance ||
+      item.Kehadiran ||
+      ""
+    ).toLowerCase().trim();
 
 
-      return(
-        attendance==="hadir"
-      );
+    return attendance === "hadir";
 
-    }
-  ).length;
+  }).length;
 
 
   const tidakHadir =
-  messages.filter(
-    function(item){
+  messages.filter(function(item){
 
-      const attendance =
-      String(
-        item.attendance ||
-        item.Attendance ||
-        item.Kehadiran ||
-        ""
-      ).toLowerCase();
+    const attendance =
+    String(
+      item.attendance ||
+      item.Attendance ||
+      item.Kehadiran ||
+      ""
+    ).toLowerCase().trim();
 
 
-      return(
-        attendance==="tidak hadir"
-      );
+    return attendance === "tidak hadir";
 
-    }
-  ).length;
+  }).length;
 
 
   const totalTamu =
-  messages.reduce(
-    function(sum,item){
+  messages.reduce(function(sum, item){
 
-      return(
-        sum+
-        Number(
-          item.pax ||
-          item.Pax ||
-          item["Jumlah Tamu"] ||
-          0
-        )
-      );
+    return sum +
+    Number(
+      item.pax ||
+      item.Pax ||
+      item["Jumlah Tamu"] ||
+      0
+    );
 
-    },
-    0
-  );
+  }, 0);
 
 
-  document.getElementById(
-    "statTotal"
-  ).textContent =
+  document.getElementById("statTotal").textContent =
   total;
 
-
-  document.getElementById(
-    "statHadir"
-  ).textContent =
+  document.getElementById("statHadir").textContent =
   hadir;
 
-
-  document.getElementById(
-    "statTidakHadir"
-  ).textContent =
+  document.getElementById("statTidakHadir").textContent =
   tidakHadir;
 
-
-  document.getElementById(
-    "statTamu"
-  ).textContent =
+  document.getElementById("statTamu").textContent =
   totalTamu;
 
 }
-
 
 
 /* =====================================
    SECURITY
 ===================================== */
 
-function escapeHTML(
-text
-){
+function escapeHTML(text){
 
   const div =
-  document.createElement(
-    "div"
-  );
-
+  document.createElement("div");
 
   div.textContent =
-  String(
-    text
-  );
-
+  String(text);
 
   return div.innerHTML;
 
 }
-
 
 
 /* =====================================
@@ -2010,6 +1800,3 @@ text
 loadMessages();
 
 </script>
-
-</body>
-  </html>
