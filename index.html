@@ -1309,7 +1309,6 @@ footer{
 const API_URL =
 "https://script.google.com/macros/s/AKfycbznqA6JBL41zZ6dYpxEl5VFoyMJJmNpofVF2-hKdMAeMDs63FHbz_aZ-f0fl9BSG5lI1A/exec";
 
-
 /* =====================================
    OPEN INVITATION
 ===================================== */
@@ -1524,64 +1523,65 @@ form.addEventListener("submit", async function(event){
    LOAD DATA GOOGLE SHEET
 ===================================== */
 
-async function loadMessages(){
+async function loadMessages() {
 
   const list =
-  document.getElementById("messageList");
+    document.getElementById("messageList");
 
   list.innerHTML =
-  '<div class="loading">Memuat ucapan...</div>';
+    '<div class="loading">Memuat ucapan...</div>';
 
-
-  try{
+  try {
 
     const response =
-    await fetch(API_URL + "?action=getMessages", {
-      method: "GET",
-      cache: "no-cache"
-    });
+      await fetch(
+        API_URL + "?t=" + Date.now(),
+        {
+          method: "GET",
+          cache: "no-store"
+        }
+      );
 
+    if (!response.ok) {
+      throw new Error(
+        "Gagal mengambil data dari server"
+      );
+    }
 
     const data =
-    await response.json();
-
+      await response.json();
 
     let messages = [];
 
-
-    if(Array.isArray(data)){
+    if (Array.isArray(data)) {
 
       messages = data;
 
-    }else if(Array.isArray(data.data)){
+    } else if (Array.isArray(data.data)) {
 
       messages = data.data;
 
-    }else if(Array.isArray(data.messages)){
+    } else if (Array.isArray(data.messages)) {
 
       messages = data.messages;
 
     }
 
-
     renderMessages(messages);
 
-
-  }catch(err){
+  } catch (err) {
 
     console.error(
-      "Gagal mengambil data:",
+      "Gagal mengambil data Google Sheet:",
       err
     );
 
-
     list.innerHTML =
-    '<div class="loading">Belum ada ucapan & doa.</div>';
+      '<div class="loading">Belum ada ucapan & doa.</div>';
 
   }
 
-}
-
+  }
 
 /* =====================================
    RENDER MESSAGES
