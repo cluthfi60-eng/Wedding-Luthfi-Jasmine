@@ -620,6 +620,10 @@ footer{
     <h1 class="opening-title">
       Luthfi & Jasmine
     </h1>
+    <div style="margin-bottom: 14px; font-size: 14px; color: #3d3d3d;">
+      Kepada Yth. Bapak/Ibu/Saudara/i:
+      <div id="guestName" style="font-weight: 600; font-size: 17px; color: #8B9E7C; margin-top: 4px;">Tamu Undangan</div>
+    </div>
     <div class="opening-line"></div>
     <div class="opening-date">
       27 • 08 • 2026
@@ -1072,6 +1076,16 @@ function escapeHTML(text){
    INITIAL LOAD
 ===================================== */
 loadMessages();
+
+  // AMBIL NAMA TAMU DARI LINK URL
+window.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const guest = urlParams.get('to');
+  if (guest) {
+    const decodedName = decodeURIComponent(guest.replace(/[-+]/g, ' '));
+    document.getElementById('guestName').textContent = decodedName;
+  }
+});
 
 </script>
 </body>
