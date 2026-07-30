@@ -1051,14 +1051,23 @@ function renderMessages(messages){
 ===================================== */
 function updateStats(messages){
   const total = messages.length;
+
   const hadir = messages.filter(function(item){
-    const attendance = String(item.attendance || item.Attendance || item.Kehadiran || "").toLowerCase().trim();
+    const attendance = String(
+      item.attendance || item.Attendance || item.Kehadiran || ""
+    ).toLowerCase().trim();
+
     return attendance === "hadir";
   }).length;
+
   const tidakHadir = messages.filter(function(item){
-    const attendance = String(item.attendance || item.Attendance || item.Kehadiran || "").toLowerCase().trim();
+    const attendance = String(
+      item.attendance || item.Attendance || item.Kehadiran || ""
+    ).toLowerCase().trim();
+
     return attendance === "tidak hadir";
   }).length;
+
   const totalTamu = messages.reduce(function(sum, item){
     return sum + Number(item.pax || item.Pax || item["Jumlah Tamu"] || 0);
   }, 0);
@@ -1066,9 +1075,13 @@ function updateStats(messages){
   document.getElementById("statTotal").textContent = total;
   document.getElementById("statHadir").textContent = hadir;
   document.getElementById("statTidakHadir").textContent = tidakHadir;
-  document.getElementById("statTamu").textContent = totalTamu;
-}
 
+  // Kalau statTamu sudah dihapus dari HTML, tidak akan error
+  const statTamu = document.getElementById("statTamu");
+  if (statTamu) {
+    statTamu.textContent = totalTamu;
+  }
+                        }
 /* =====================================
    SECURITY
 ===================================== */
